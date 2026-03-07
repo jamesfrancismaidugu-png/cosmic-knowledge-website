@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cosmic Knowledge</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    text-align:center;
+    background:black;
+    color:white;
+    padding:60px;
+    overflow:hidden;
+}
+
+h1{
+    font-size:40px;
+    color:#38bdf8;
+    text-shadow:0 0 10px #38bdf8;
+}
+
+button{
+    margin-top:25px;
+    padding:12px 25px;
+    font-size:16px;
+    border:none;
+    border-radius:10px;
+    background:#38bdf8;
+    color:black;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0ea5e9;
+}
+
+#fact{
+    margin-top:35px;
+    font-size:22px;
+    background:rgba(255,255,255,0.1);
+    padding:20px;
+    border-radius:10px;
+}
+
+/* floating stars */
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{opacity:0.2;}
+    to{opacity:1;}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🌌 Cosmic Knowledge</h1>
+
+<p>Click the button to discover a random space fact!</p>
+
+<button onclick="newFact()">🚀 Generate Fact</button>
+
+<div id="fact">Your space fact will appear here...</div>
+
+<script>
+
+const facts = [
+"The Sun makes up 99.86% of the mass in our solar system.",
+"One million Earths could fit inside the Sun.",
+"A day on Venus is longer than a year on Venus.",
+"Neutron stars can spin 600 times per second.",
+"There are more stars in the universe than grains of sand on Earth.",
+"The footprints on the Moon will stay there for millions of years.",
+"Saturn could float in water because it is mostly gas."
+];
+
+function newFact(){
+    const random = Math.floor(Math.random()*facts.length);
+    document.getElementById("fact").innerText = facts[random];
+}
+
+/* create stars */
+
+for(let i=0;i<80;i++){
+    let star=document.createElement("div");
+    star.className="star";
+    star.style.top=Math.random()*100+"%";
+    star.style.left=Math.random()*100+"%";
+    document.body.appendChild(star);
+}
+
+</script>
+
+</body>
+</html>
